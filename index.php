@@ -6,7 +6,7 @@
 <body>
 
 <h1>Mon logo</h1>
-<img src="bankto.png" alt="Logo de mon site">
+<img src="tiko.png" alt="Logo de mon site">
 
 <?php
 // Connecter à la base de données MariaDB
