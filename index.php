@@ -6,7 +6,7 @@
 <body>
 
 <h1>Mon logo</h1>
-<img src="bankto.jpg" alt="Logo de mon site">
+<img src="bankto.png" alt="Logo de mon site">
 
 <?php
 // Paramètres de connexion
