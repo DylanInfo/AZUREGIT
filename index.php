@@ -6,27 +6,40 @@
 <body>
 
 <h1>Mon logo</h1>
-<img src="tiko.png" alt="Logo de mon site">
+<img src="logo.jpg" alt="Logo de mon site">
 
 <?php
+// Paramètres de connexion
+$host = '10.0.0.5';
+$username = 'wazo';
+$password = '18022000Dragau&';
+$database = 'bankto';
+
 // Connecter à la base de données MariaDB
-$db = new mysqli('10.0.0.5', 'wazo', '18022000Dragau&', 'bankto');
+$db = new mysqli($host, $username, $password, $database);
+
+// Vérifier la connexion
+if ($db->connect_error) {
+    die('Erreur de connexion (' . $db->connect_errno . ') ' . $db->connect_error);
+}
 
 // Sélectionner les données de la table
-$query = "SELECT * FROM employes";
+$query = "SELECT nom, prenom, adresse FROM votre_table";
 $result = $db->query($query);
+
+// Vérifier le résultat de la requête
+if (!$result) {
+    die('Erreur dans la requête (' . $db->errno . ') ' . $db->error);
+}
 
 // Afficher les données dans un tableau HTML
 echo "<table>";
-echo "<tr><th>Nom</th><th>Prenom</th><th>Service</th><th>Fonction</th><th>Login</th><th>Mail</th></tr>";
+echo "<tr><th>Nom</th><th>Prénom</th><th>Adresse</th></tr>";
 while ($row = $result->fetch_assoc()) {
     echo "<tr>";
-    echo "<td>" . $row['Numero'] . "</td>";
-    echo "<td>" . $row['Prenom'] . "</td>";
-    echo "<td>" . $row['Service'] . "</td>";
-    echo "<td>" . $row['Fonction'] . "</td>";
-    echo "<td>" . $row['Login'] . "</td>";
-    echo "<td>" . $row['Mail'] . "</td>";
+    echo "<td>" . htmlspecialchars($row['nom']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['prenom']) . "</td>";
+    echo "<td>" . htmlspecialchars($row['adresse']) . "</td>";
     echo "</tr>";
 }
 echo "</table>";
@@ -36,4 +49,4 @@ $db->close();
 ?>
 
 </body>
-<html>
+</html>
