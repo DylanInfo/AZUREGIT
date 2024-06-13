@@ -70,17 +70,19 @@ if ($stmt = $conn->prepare($query)) {
     $result = $stmt->get_result();
 
     // Afficher les données dans un tableau HTML
-    if ($result->num_rows > 0) {
-        echo "<table>";
-        echo "<tr><th>Numéro</th><th>Prénom</th><th>Nom</th></tr>";
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . htmlspecialchars($row['Numero']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['Prenom']) . "</td>";
-            echo "<td>" . htmlspecialchars($row['Nom']) . "</td>";
-            echo "</tr>";
-        }
-        echo "</table>";
+echo "<table>";
+echo "<tr><th>Nom</th><th>Prenom</th><th>Service</th><th>Fonction</th><th>Login</th><th>Mail</th></tr>";
+while ($row = $result->fetch_assoc()) {
+    echo "<tr>";
+    echo "<td>" . $row['Numero'] . "</td>";
+    echo "<td>" . $row['Prenom'] . "</td>";
+    echo "<td>" . $row['Service'] . "</td>";
+    echo "<td>" . $row['Fonction'] . "</td>";
+    echo "<td>" . $row['Login'] . "</td>";
+    echo "<td>" . $row['Mail'] . "</td>";
+    echo "</tr>";
+}
+echo "</table>";
     } else {
         echo "<p style='text-align: center;'>Aucune donnée trouvée.</p>";
     }
