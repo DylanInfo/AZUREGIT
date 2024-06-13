@@ -11,7 +11,7 @@
 <?php
 // Paramètres de connexion
 $host = '10.0.0.5';
-$username = 'wazo';
+$username = 'colette';
 $password = '18022000Dragau&';
 $database = 'bankto';
 
