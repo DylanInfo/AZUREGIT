@@ -40,7 +40,7 @@
 <body>
 
 <h1>Informations des utilisateurs</h1>
-<img src="bankto.png" alt="Youhou!">
+<img src="pouet.png" alt="Youhou!">
 
 <?php
 // Paramètres de connexion à la base de données
