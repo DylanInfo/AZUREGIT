@@ -10,8 +10,8 @@
 
 <?php
 // Paramètres de connexion
-$host = '10.0.0.5';
-$username = 'colette';
+$host = '20.119.16.42';
+$username = 'wazo';
 $password = '18022000Dragau&';
 $database = 'bankto';
 
