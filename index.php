@@ -40,7 +40,7 @@
 <body>
 
 <h1>Informations des utilisateurs</h1>
-<img src="pouet.png" alt="Youhou!">
+<img src="bankto.png" alt="Youhou!">
 
 <?php
 // Paramètres de connexion à la base de données
@@ -52,7 +52,7 @@ $dbname = 'bantko';
 // Créer une connexion
 //$conn = new mysqli($servername, $username, $password, $dbname);
 $conn = mysqli_init();
-mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
+mysqli_ssl_set($conn,NULL,NULL, "DigiCertGlobalRootCA.crt.pem", NULL, NULL);
 mysqli_real_connect($conn, 'bdd-dyl.mysql.database.azure.com', 'wazo', '18022000Dragau&', 'bankto', 3306, MYSQLI_CLIENT_SSL);
 if (mysqli_connect_errno()) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
