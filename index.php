@@ -40,7 +40,7 @@
 <body>
 
 <h1>Informations des utilisateurs</h1>
-<img src="champ.png" alt="Youhou!">
+<img src="bankto.png" alt="Youhou!">
 
 <?php
 // Paramètres de connexion à la base de données
@@ -52,7 +52,7 @@ $dbname = 'bantko';
 // Créer une connexion
 //$conn = new mysqli($servername, $username, $password, $dbname);
 $conn = mysqli_init();
-mysqli_ssl_set($conn,NULL,NULL, "DigiCertGlobalRootCA.crt.pem", NULL, NULL);
+mysqli_ssl_set($conn,NULL,NULL, "/var/www/html/DigiCertGlobalRootCA.crt.pem", NULL, NULL);
 mysqli_real_connect($conn, 'bdd-dyl.mysql.database.azure.com', 'wazo', '18022000Dragau&', 'bankto', 3306, MYSQLI_CLIENT_SSL);
 if (mysqli_connect_errno()) {
 die('Failed to connect to MySQL: '.mysqli_connect_error());
@@ -70,19 +70,17 @@ if ($stmt = $conn->prepare($query)) {
     $result = $stmt->get_result();
 
     // Afficher les données dans un tableau HTML
-echo "<table>";
-echo "<tr><th>Nom</th><th>Prenom</th><th>Service</th><th>Fonction</th><th>Login</th><th>Mail</th></tr>";
-while ($row = $result->fetch_assoc()) {
-    echo "<tr>";
-    echo "<td>" . $row['Numero'] . "</td>";
-    echo "<td>" . $row['Prenom'] . "</td>";
-    echo "<td>" . $row['Service'] . "</td>";
-    echo "<td>" . $row['Fonction'] . "</td>";
-    echo "<td>" . $row['Login'] . "</td>";
-    echo "<td>" . $row['Mail'] . "</td>";
-    echo "</tr>";
-}
-echo "</table>";
+    if ($result->num_rows > 0) {
+        echo "<table>";
+        echo "<tr><th>Numéro</th><th>Prénom</th><th>Nom</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['Numero']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['Prenom']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['Nom']) . "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
     } else {
         echo "<p style='text-align: center;'>Aucune donnée trouvée.</p>";
     }
