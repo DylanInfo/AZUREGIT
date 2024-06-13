@@ -9,6 +9,7 @@
 <img src="bankto.png" alt="Logo de mon site">
 
 <?php
+$ssl_cert = 'Microsoft RSA Root Certificate Authority 2017.crt';
 // Paramètres de connexion
 $host = '20.119.16.42';
 $username = 'wazo';
